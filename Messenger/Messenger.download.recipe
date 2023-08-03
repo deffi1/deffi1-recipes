@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Messenger.</string>
+	<key>Identifier</key>
+	<string>def.download.Messenger</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Messenger</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>https://scontent.fvno2-1.fna.fbcdn.net/v/t39.2270-6/10000000_71039415315822636_399903342401038998_n.dmg/Messenger.190.0.0.9.106.dmg?_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=435822&amp;_nc_ohc=jQnD_Psxet4AX_yUtbp&amp;_nc_ht=scontent.fvno2-1.fna&amp;oh=00_AfAcamIrN1Z5q3KeH_yhAhM0w9Olw7Kt03IUdFuR2jAMvg&amp;oe=64B5C40E&amp;dl=1</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Messenger.app</string>
+				<key>requirement</key>
+				<string>identifier "com.facebook.archon.developerID" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = V9WTTPBFK9</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/Messenger.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
