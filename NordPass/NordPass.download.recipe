@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)</string>
+	<string>Created with Recipe Robot v2.3.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
 	<string>Downloads the latest version of NordPass.</string>
 	<key>Identifier</key>
@@ -14,7 +14,7 @@
 		<string>NordPass</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>2.3</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -23,7 +23,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://downloads.npass.app/mac/NordPass.dmg</string>
+				<string>https://downloads.npass.app/mac/arm/NordPass.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -38,7 +38,7 @@
 				<key>input_path</key>
 				<string>%pathname%/NordPass.app</string>
 				<key>requirement</key>
-				<string>identifier "com.nordsec.nordpass" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = XSY9C6M6C5</string>
+				<string>anchor apple generic and certificate leaf[subject.OU] = W5W395V82Y or anchor apple generic and certificate leaf[subject.OU] = XSY9C6M6C5</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

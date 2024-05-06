@@ -5,37 +5,39 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v2.3.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Installs the latest version of NordPass.</string>
+	<string>Downloads the latest version of NordPass and uploads the package to Jamf.</string>
 	<key>Identifier</key>
-	<string>def.install.NordPass</string>
+	<string>def.jamf.NordPass</string>
 	<key>Input</key>
 	<dict>
+		<key>CATEGORY</key>
+		<string>Productivity</string>
 		<key>NAME</key>
 		<string>NordPass</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3</string>
 	<key>ParentRecipe</key>
-	<string>def.download.NordPass</string>
+	<string>def.pkg.NordPass</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_path</key>
-				<string>%pathname%</string>
-				<key>items_to_copy</key>
-				<array>
-					<dict>
-						<key>destination_path</key>
-						<string>/Applications</string>
-						<key>source_item</key>
-						<string>NordPass.app</string>
-					</dict>
-				</array>
+				<key>category_name</key>
+				<string>%CATEGORY%</string>
 			</dict>
 			<key>Processor</key>
-			<string>InstallFromDMG</string>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_category</key>
+				<string>%CATEGORY%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
 		</dict>
 	</array>
 </dict>
